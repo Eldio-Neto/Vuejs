@@ -1,2 +1,2 @@
 # Vuejs
-aulas vuejs
+Adicionando novos conhecimentos de vue.js
