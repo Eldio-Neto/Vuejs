@@ -4,9 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script src="./vue.js"></script>
+    <style>
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .blue {
+            background-color: blue;
+        }        
+        .white {
+            background-color: white;
+        }
+        .principal{
+            width: 200px;
+            height: 200px;
+        }
+        .comum{
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+        }
+        .border{
+            border: 1px solid;
+        }
+    </style>
 </head>
 <body>
-    Teste
+    <div id="app">
+        {{mensagem}}<br>
+        {{somar()}}}<br>
+        <a :href="site">Site</a>
+        <p v-bind:class="cor">Diretiva v-bind</p>
+        <input type="text">
+        <input type="checkbox" v:model="a">
+        <button @click="clicou">Clica</button>
+        <br>
+        <div class="principal border" :class="cor"></div>
+        <hr>
+        <div class="comum border"  @click="mudarCor('green')"></div>
+        <div class="comum border"  @mouseover="mudarCor('blue')" @mouseout="mudarCor('white')"></div>
+        <div class="comum border"></div>
+
+    </div>
+    <script>
+        let options = {
+            el:'#app',
+            data:{
+                mensagem: "primeiro Template",
+                site: "https://www.google.com",
+                cor:'red',
+                a:'t'
+            },
+            methods:{
+                somar: function (){
+                    return 4+2;
+                },
+                clicou(){
+                    alert('Foi clicado   -1'  , this.a)
+                },
+                mudarCor(c){
+                    this.cor=c;
+                }
+            }
+        };
+        const vm = new Vue(options);
+    </script>
 </body>
 </html>
